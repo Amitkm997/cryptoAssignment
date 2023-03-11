@@ -33,13 +33,14 @@ const createUser= async function(req,res){
     if(!gender1.includes(gender)) return res.status(400).send({ status: false, msg: "gender should be male or female only" });
 
 
-    let validDob=/^[0-9]{4}-(((0[13578]|(10|12))-(0[1-9]|[1-2][0-9]|3[0-1]))|(02-(0[1-9]|[1-2][0-9]))|((0[469]|11)-(0[1-9]|[1-2][0-9]|30)))$/;
+    let validDob=/^(?:0[1-9]|[12]\d|3[01])([\/.-])(?:0[1-9]|1[012])\1(?:19|20)\d\d$/;
     if(!validDob.test(dob)){
         return res.status(400).send({message:"invalid dob"})
     }
     
-    let userdata=await userModel.create(data);
-    res.status(201).send({ data: userdata, status: true });
+    let userdata=await userModel.create(req.body);
+    console.log(userdata)
+    res.status(201).send({ message: userdata, status: true });
   } catch (err) {
     res.status(500).send({ msg: err.message });
   }
@@ -49,7 +50,7 @@ const createUser= async function(req,res){
 //--------------------getUser---------------------
 const getUser=async function(req,res){
     let data=await userModel.find();
-    res.send.status(200)({data:data})
+    res.status(200).send({data:data})
 }
 
 //--------------------updateUser---------------------
@@ -64,7 +65,7 @@ const updateUser = async function (req, res) {
     
       let userData = req.body;
       let updatedUser = await userModel.findOneAndUpdate({ _id: userId }, userData);
-      res.send.status(204)({ status: updatedUser, data: updatedUser });
+      res.status(204).send({ status: true, data: updatedUser });
     };
 
 //----------------------deleteUser----------------------

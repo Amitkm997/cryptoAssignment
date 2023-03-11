@@ -1,26 +1,45 @@
-const readLine=require('readline');
-
-const r1=readLine.createInterface({
-    input:process.stdin,
-    output:process.stdout
+const readline = require("readline");
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
 });
 
-r1.question('Enter a math question?',(input)=>{
-    let a=input.substring(8);
-    a=a.substring(0,a.length-1);
-    const firstName=a.split(' ')[0];
-    const seconName=a.split(' ')[2];
-    const operation =s.split(' ')[1];
+function calc(question) {
+  const pattern =
+    /^What is (-?\d+) (plus|minus|multiplied by|divided by) (-?\d+)\?$/i;
+  const matches = pattern.exec(question);
 
-    let result;
-    if(operation==='plus'){
-        result=Number(firstName)+Number(seconName);
-    }else if(operation==='minus '){
-        result=Number(firstName)-Number(seconName);
-    }else if(operation==='multiplied'){
-        result=Number(firstName)*Number(seconName);
-    }else if(operation==='divided'){
-        result=Number(firstName)/Number(seconName);
+  if (!matches) {
+    return null;
+  }
+
+  const operand1 = parseInt(matches[1]);
+  const operator = matches[2];
+  const operand2 = parseInt(matches[3]);
+
+  switch (operator.toLowerCase()) {
+    case "plus":
+      return `${operand1} plus ${operand2} is ${operand1 + operand2}`;
+    case "minus":
+      return `${operand1} minus ${operand2} is ${operand1 - operand2}`;
+    case "multiplied by":
+      return `${operand1} multiplied by ${operand2} is ${operand1 * operand2}`;
+    case "divided by":
+      return `${operand1} divided by ${operand2} is ${operand1 / operand2}`;
+    default:
+      return null;
+  }
+}
+rl.question(
+  'Enter a math question (e.g. "What is 5 plus 7?"): ',
+  (question) => {
+    const result = calc(question);
+
+    if (result) {
+      console.log(result);
+    } else {
+      console.log("Invalid input.");
     }
-    console.log(firstName +' '+ operation + ' '+ seconName + ' is ' +result)
-})
+    rl.close();
+  }
+);

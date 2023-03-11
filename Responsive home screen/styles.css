@@ -1,0 +1,246 @@
+/* Variables */
+:root {
+    --primary-color: #0d1c3a;
+    --secondary-color: #fff;
+    --border-color: #e5e5e5;
+  }
+  
+  /* Global styles */
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+  }
+  
+  /* Header styles */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: var(--secondary-color);
+  }
+  
+  .header-logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+  }
+  
+  .header-nav {
+    display: none;
+  }
+  
+  @media screen and (min-width: 768px) {
+    .header-nav {
+      display: block;
+    }
+  }
+  
+  .header-nav-list {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .header-nav-item {
+    margin-left: 1rem;
+  }
+  
+  .header-nav-item a {
+    color: var(--primary-color);
+    text-decoration: none;
+  }
+  
+  .header-nav-item a:hover {
+    text-decoration: underline;
+  }
+  
+  .header-search {
+    display: none;
+  }
+  
+  @media screen and (min-width: 768px) {
+    .header-search {
+      display: block;
+    }
+  }
+  
+  .header-search input[type="text"] {
+    padding: 0.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 0.25rem 0 0 0.25rem;
+    width: 70%;
+  }
+  
+  .header-search input[type="text"]:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--primary-color);
+  }
+  
+  .header-search button[type="submit"] {
+    padding: 0.5rem 1rem;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    border: none;
+    border-radius: 0 0.25rem 0.25rem 0;
+  }
+  
+  .header-search button[type="submit"]:hover {
+    background-color: darken(var(--primary-color), 10%);
+  }
+  
+  /* Main styles */
+  .main {
+    padding: 1rem;
+  }
+  
+  .hero {
+    text-align: center;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    padding: 3rem;
+  }
+  
+  .hero-title {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+  
+  .hero-text {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+  }
+  
+  .hero-btn {
+    padding: 1rem 2rem;
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    border: none;
+    border-radius: 0.25rem;
+    font-size: 1.25rem;
+    cursor: pointer;
+  }
+  
+  .hero-btn:hover {
+    background-color: darken(var(--secondary-color), 10%);
+  }
+  
+  .features {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 3rem 0;
+  }
+  
+  .feature {
+    margin: 1rem;
+    text-align: center;
+  }
+  
+  .feature-img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+  }
+  
+  .feature-title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .feature-text {
+    font-size: 1rem;
+  }
+  
+  .cta {
+    text-align: center;
+    margin-top: 3rem;
+    padding: 3rem;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+  }
+  
+  .cta-title {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .cta-text {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+  }
+  
+  .cta-btn {
+    padding: 1rem 2rem;
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    border: none;
+    border-radius: 0.25rem;
+    font-size: 1.25rem;
+    cursor: pointer;
+  }
+  
+  .cta-btn:hover {
+    background-color: darken(var(--secondary-color), 10%);
+  }
+  
+  /* Footer styles */
+  .footer {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    padding: 1rem;
+  }
+  
+  .footer-text {
+    text-align: center;
+    font-size: 0.75rem;
+  }
+  
+  .footer-text a {
+    color: var(--secondary-color);
+    text-decoration: none;
+  }
+  
+  .footer-text a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Responsive styles */
+  @media screen and (min-width: 768px) {
+    .hero-title {
+      font-size: 4rem;
+    }
+  
+    .hero-text {
+      font-size: 1.5rem;
+    }
+  
+    .feature {
+      flex-basis: calc(33.33% - 2rem);
+    }
+  }
+  
+  @media screen and (min-width: 992px) {
+    .header-nav {
+      display: block;
+    }
+  
+    .header-search {
+      display: block;
+      width: 30%;
+    }
+  
+    .features {
+      justify-content: space-between;
+    }
+  
+    .feature {
+      flex-basis: calc(25% - 2rem);
+    }
+  }
+  
